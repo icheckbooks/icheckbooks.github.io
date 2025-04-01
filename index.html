@@ -32,19 +32,22 @@
         document.getElementById("signup-form").addEventListener("submit", async function(event) {
             event.preventDefault();
 
-            const firstName = document.getElementById("first_name").value;
-            const email = document.getElementById("email").value;
-            const response = await fetch("https://api.icheckbooks.com/signup", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ firstName, email })
-            });
+            try {
+                const firstName = document.getElementById("first_name").value;
+                const email = document.getElementById("email").value;
+                const response = await fetch("https://api.icheckbooks.com/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ firstName, email })
+                });
 
-            if (response.ok) {
-                alert("Check your email to confirm your sign-up!");
-                this.reset();
-            } else {
-                alert("Error signing up. Please try again later.");
+                if (response.ok) {
+                    window.location.href = '/success.html';
+                } else {
+                    window.location.href = '/error.html';
+                }
+            } catch (error) {
+                window.location.href = '/error.html';
             }
         });
     </script>
