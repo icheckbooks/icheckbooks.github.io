@@ -33,7 +33,13 @@ h1 {
 }
 
 .checkmark {
-  color: green;
+  color: #2ecc71;
+  -webkit-text-fill-color: #2ecc71;
+  text-fill-color: #2ecc71;
+}
+
+.checkmark::after {
+  content: '✓';
 }
 
 p {
